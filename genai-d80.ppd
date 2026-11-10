@@ -29,8 +29,8 @@
 *PageSize A5/A5 (210 x 148 mm): "<</PageSize[595 419]/ImagingBBox null>>setpagedevice"
 *PageSize B5/B5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
 *PageSize Letter/Carta: "<</PageSize[612 790]/ImagingBBox null>>setpagedevice"
-*PageSize Legal/Oficio: "<</PageSize[612 1006]/ImagingBBox null>>setpagedevice"
-*PageSize Roll216/Rolo 216 mm continuo (1,5 m): "<</PageSize[612 4251]/ImagingBBox null>>setpagedevice"
+*PageSize Legal/Ofício: "<</PageSize[612 1006]/ImagingBBox null>>setpagedevice"
+*PageSize Roll216/Rolo 216 mm contínuo (1,5 m): "<</PageSize[612 4251]/ImagingBBox null>>setpagedevice"
 *CloseUI: *PageSize
 *OpenUI *PageRegion/Tamanho do papel: PickOne
 *OrderDependency: 10 AnySetup *PageRegion
@@ -39,24 +39,24 @@
 *PageRegion A5/A5 (210 x 148 mm): "<</PageSize[595 419]/ImagingBBox null>>setpagedevice"
 *PageRegion B5/B5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
 *PageRegion Letter/Carta: "<</PageSize[612 790]/ImagingBBox null>>setpagedevice"
-*PageRegion Legal/Oficio: "<</PageSize[612 1006]/ImagingBBox null>>setpagedevice"
-*PageRegion Roll216/Rolo 216 mm continuo (1,5 m): "<</PageSize[612 4251]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal/Ofício: "<</PageSize[612 1006]/ImagingBBox null>>setpagedevice"
+*PageRegion Roll216/Rolo 216 mm contínuo (1,5 m): "<</PageSize[612 4251]/ImagingBBox null>>setpagedevice"
 *CloseUI: *PageRegion
 *DefaultImageableArea: A4
 *ImageableArea A4/A4 (210 x 297 mm): "0 0 595 841"
 *ImageableArea A5/A5 (210 x 148 mm): "0 0 595 419"
 *ImageableArea B5/B5: "0 0 498 708"
 *ImageableArea Letter/Carta: "0 0 612 790"
-*ImageableArea Legal/Oficio: "0 0 612 1006"
-*ImageableArea Roll216/Rolo 216 mm continuo (1,5 m): "0 0 612 4251"
+*ImageableArea Legal/Ofício: "0 0 612 1006"
+*ImageableArea Roll216/Rolo 216 mm contínuo (1,5 m): "0 0 612 4251"
 *DefaultPaperDimension: A4
 *PaperDimension A4/A4 (210 x 297 mm): "595 841"
 *PaperDimension A5/A5 (210 x 148 mm): "595 419"
 *PaperDimension B5/B5: "498 708"
 *PaperDimension Letter/Carta: "612 790"
-*PaperDimension Legal/Oficio: "612 1006"
-*PaperDimension Roll216/Rolo 216 mm continuo (1,5 m): "612 4251"
-*OpenUI *Resolution/Resolucao: PickOne
+*PaperDimension Legal/Ofício: "612 1006"
+*PaperDimension Roll216/Rolo 216 mm contínuo (1,5 m): "612 4251"
+*OpenUI *Resolution/Resolução: PickOne
 *OrderDependency: 20 AnySetup *Resolution
 *DefaultResolution: 203dpi
 *Resolution 203dpi/203 dpi: "<</HWResolution[203 203]/cupsBitsPerColor 1/cupsColorOrder 0/cupsColorSpace 3>>setpagedevice"
@@ -110,7 +110,14 @@
 *OrderDependency: 30 AnySetup *SavePaper
 *DefaultSavePaper: Yes
 *SavePaper Yes/Sim: "<</cupsInteger2 0>>setpagedevice"
-*SavePaper No/Nao: "<</cupsInteger2 1>>setpagedevice"
+*SavePaper No/Não: "<</cupsInteger2 1>>setpagedevice"
 *CloseUI: *SavePaper
+*OpenUI *Qualidade/Qualidade (calor da cabeça): PickOne
+*OrderDependency: 30 AnySetup *Qualidade
+*DefaultQualidade: Maximo
+*Qualidade Normal/Normal (padrão da impressora): ""
+*Qualidade Escuro/Escuro (calor 200): ""
+*Qualidade Maximo/Máximo (calor 255): ""
+*CloseUI: *Qualidade
 *DefaultFont: Courier
 *Font Courier: Standard "(002.004S)" Standard ROM

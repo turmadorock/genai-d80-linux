@@ -73,7 +73,7 @@ def pages(f):
         yield width, bpp, cspace, ints, rows
 
 
-def black_int(row, width, bpp, cspace):
+def black_int(row, width, bpp, cspace, y=0):
     """Linha como inteiro de 'width' bits, bit mais alto = ponto 0, 1 = preto."""
     white_is_one = cspace in (0, 18)          # W / sW
     if bpp == 1:
@@ -82,13 +82,24 @@ def black_int(row, width, bpp, cspace):
             v ^= (1 << width) - 1
         return v
     if bpp == 8:
-        if white_is_one:
-            bits = ''.join('1' if b < 128 else '0' for b in row[:width])
-        else:
-            bits = ''.join('1' if b >= 128 else '0' for b in row[:width])
+        # pontilhado ordenado (Bayer 8x8): cinzas e fotos viram tramas, texto continua nítido
+        thr = BAYER[y % 8]
+        if not white_is_one:
+            row = bytes(255 - b for b in row[:width])
+        row = row[:width].translate(CONTRASTE)
+        bits = ''.join('1' if b < thr[x & 7] else '0' for x, b in enumerate(row))
         return int(bits, 2) if bits else 0
     sys.stderr.write("ERROR: rastertod80: %d bits por ponto nao suportado\n" % bpp)
     sys.exit(1)
+
+
+_B = [[0, 32, 8, 40, 2, 34, 10, 42], [48, 16, 56, 24, 50, 18, 58, 26],
+      [12, 44, 4, 36, 14, 46, 6, 38], [60, 28, 52, 20, 62, 30, 54, 22],
+      [3, 35, 11, 43, 1, 33, 9, 41], [51, 19, 59, 27, 49, 17, 57, 25],
+      [15, 47, 7, 39, 13, 45, 5, 37], [63, 31, 55, 23, 61, 29, 53, 21]]
+BAYER = [[v * 4 + 2 for v in r] for r in _B]      # limiares 2..254
+# contraste: bordas suavizadas do texto viram preto/branco sólido, cinzas médios viram trama
+CONTRASTE = bytes(min(255, max(0, (v - 24) * 255 // 200)) for v in range(256))
 
 
 def place(v, width, shift):
@@ -98,9 +109,12 @@ def place(v, width, shift):
     return (v & FULL).to_bytes(HEAD_B, 'big')
 
 
+CALOR = {'Normal': 0, 'Escuro': 200, 'Maximo': 255}
+
+
 def options():
     """Opções: padrão gravado no PPD da fila (lpadmin -o) e, por cima, as do trabalho (lp -o)."""
-    opts = {'Horizontal': '0', 'SavePaper': 'Yes'}
+    opts = {'Horizontal': '0', 'SavePaper': 'Yes', 'Qualidade': 'Maximo'}
     try:
         for line in open(os.environ.get('PPD', ''), encoding='latin-1'):
             for k in opts:
@@ -117,21 +131,27 @@ def options():
         off = max(-20, min(20, int(opts['Horizontal'])))
     except ValueError:
         off = 0
-    return off, opts['SavePaper'].lower() not in ('no', 'false', 'nao')
+    calor = CALOR.get(opts['Qualidade'], CALOR['Maximo'])
+    return off, opts['SavePaper'].lower() not in ('no', 'false', 'nao'), calor
 
 
 def main():
     out = sys.stdout.buffer
     f = open(sys.argv[6], 'rb') if len(sys.argv) > 6 else sys.stdin.buffer
-    off_mm, save_paper = options()
+    off_mm, save_paper, calor = options()
     out.write(b'\x1b@')
+    if calor:
+        # ESC 7 n1 n2 n3: pontos aquecidos por vez, tempo de aquecimento, intervalo.
+        # Testado na D80: aceita até 255 (o máximo do comando).
+        out.write(b'\x1b7\x07' + bytes([calor]) + b'\x02')
+    log("qualidade: calor %s" % (calor or 'padrao da impressora'))
     n = 0
     for width, bpp, cspace, ints, rows in pages(f):
         n += 1
         shift = (HEAD - width) // 2 + round(off_mm * DPMM)
         log("pagina %d: %dx%d bpp=%d cspace=%d ajuste=%+d mm inicio=ponto %d"
             % (n, width, len(rows), bpp, cspace, off_mm, shift))
-        lines = [place(black_int(r, width, bpp, cspace), width, shift) for r in rows]
+        lines = [place(black_int(r, width, bpp, cspace, y), width, shift) for y, r in enumerate(rows)]
         if save_paper:
             while lines and not any(lines[-1]):
                 lines.pop()

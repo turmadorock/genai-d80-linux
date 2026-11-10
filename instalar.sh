@@ -70,6 +70,18 @@ else
 fi
 
 echo "== 4/5 Atalhos no menu =="
+install -D -m 644 "$DIR/testes/teste-V2-A.pdf" /usr/share/genai-d80/teste.pdf
+install -m 755 "$DIR/painel-impressoras.py" /usr/local/bin/painel-impressoras
+cat > /usr/share/applications/painel-impressoras.desktop <<EOF
+[Desktop Entry]
+Type=Application
+Name=Impressoras Térmicas
+Comment=Painel da GENAI D80 e da Kapbom KA-1445: conexão, orientação, qualidade e testes
+Exec=/usr/local/bin/painel-impressoras
+Icon=printer
+Terminal=false
+Categories=Utility;Settings;HardwareSettings;
+EOF
 install -m 755 "$DIR/conectar-d80-cabo.sh" /usr/local/bin/conectar-d80-cabo
 install -m 755 "$DIR/conectar-d80-bluetooth.sh" /usr/local/bin/conectar-d80-bluetooth
 for k in cabo:Cabo bluetooth:Bluetooth; do
@@ -86,8 +98,11 @@ EOF
 done
 
 echo "== 5/5 Página de teste =="
-lp -d D80 -t "TESTE V2-A" "$DIR/testes/teste-V2-A.pdf" 2>/dev/null \
-  || echo "(cabo desconectado: teste pelo cabo não enviado)"
+if lsusb -d 0fe6:811e >/dev/null 2>&1; then
+  lp -d D80 -t "TESTE V2-A" "$DIR/testes/teste-V2-A.pdf"
+else
+  echo "(cabo desconectado: página de teste não enviada; use o painel 'Impressoras Térmicas')"
+fi
 echo
 lpstat -v
 echo

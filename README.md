@@ -11,6 +11,8 @@ O mesmo aparelho é vendido como **Luck Jingle D80** e **ByteCintia D80**. O fab
 - Impressão de qualquer programa, de documentos e PDFs em A4, Carta, Ofício, A5, B5 ou rolo contínuo.
 - Impressão pelo **cabo USB-C** (fila `D80`) e pelo **Bluetooth** (fila `D80-BT`).
 - Ajuste horizontal de -20 a +20 mm.
+- Qualidade (calor da cabeça) até o máximo de 255, e cinzas em trama de pontos.
+- Orientação escolhida no painel gráfico **Impressoras Térmicas**.
 - Corte do papel em branco no fim da página.
 - Atalhos no menu do sistema, **Conectar D80 Cabo** e **Conectar D80 Bluetooth**, para trocar a impressora padrão.
 
@@ -34,6 +36,32 @@ O instalador:
 5. Imprime a página `testes/teste-V2-A.pdf`, que tem uma moldura na borda do A4.
 
 Para remover tudo: `sudo bash desinstalar.sh`.
+
+## Painel gráfico
+
+O instalador coloca no menu o programa **Impressoras Térmicas**, que tem uma aba para cada impressora instalada (GENAI D80 e Kapbom KA-1445). Nele dá para:
+
+- ver se o cabo está ligado e qual impressora é a padrão;
+- trocar entre **CABO** e **BLUETOOTH** com um clique;
+- escolher **orientação**: automática, retrato, paisagem (90°), paisagem invertida (270°) ou retrato invertido (180°);
+- escolher **qualidade** (calor da cabeça), **tamanho do papel**, **ajuste horizontal** e **corte do papel em branco**;
+- imprimir a **página de teste** ou **qualquer arquivo** (PDF, imagem, texto).
+
+As escolhas valem para as duas filas, cabo e Bluetooth. Não pede senha: basta o usuário estar no grupo `lpadmin`, o padrão no Mint e no Ubuntu.
+
+Pelo terminal: `painel-impressoras` (ou `painel-impressoras d80` / `painel-impressoras ka1445` para abrir direto numa aba).
+
+A resolução é **203 dpi, fixa**: é o limite físico da cabeça e não muda por software. O que melhora a nitidez é o **calor**.
+
+## Qualidade (calor da cabeça)
+
+| Opção `Qualidade` | Calor |
+|---|---|
+| `Maximo` (padrão) | 255 |
+| `Escuro` | 200 |
+| `Normal` | o padrão da impressora |
+
+A D80 aceita o comando `ESC 7` até 255 (testado no papel). Os cinzas e as fotos saem em trama de pontos (Bayer 8×8).
 
 ## Ajuste horizontal
 
@@ -61,6 +89,7 @@ O padrão é **-1 mm**, o valor que deixou a unidade testada perfeita.
 | `genai-d80.ppd` | Descrição da impressora para o CUPS |
 | `instalar.sh` / `desinstalar.sh` | Instalação e remoção |
 | `conectar-d80-cabo.sh` / `conectar-d80-bluetooth.sh` | Trocar a impressora padrão entre cabo e Bluetooth |
+| `painel-impressoras.py` | Painel gráfico "Impressoras Térmicas" (GTK) |
 | `testes/` | Páginas de teste com régua e moldura |
 
 ## Licença
