@@ -1,0 +1,116 @@
+*PPD-Adobe: "4.3"
+*FormatVersion: "4.3"
+*FileVersion: "2.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "GD80V2.PPD"
+*Manufacturer: "GENAI"
+*Product: "(D80)"
+*ModelName: "GENAI D80 A4"
+*ShortNickName: "GENAI D80 A4"
+*NickName: "GENAI Termica D80 A4 v2 (Luck Jingle)"
+*1284DeviceID: "MFG:;CMD:XPP,XL;MDL:D80_Printer;CLS:PRINTER;"
+*PSVersion: "(3010.000) 550"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: Gray
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*cupsVersion: 2.0
+*cupsManualCopies: True
+*cupsFilter: "application/vnd.cups-raster 100 rastertod80"
+*HWMargins: 0 0 0 0
+*OpenUI *PageSize/Tamanho do papel: PickOne
+*OrderDependency: 10 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize A4/A4 (210 x 297 mm): "<</PageSize[595 841]/ImagingBBox null>>setpagedevice"
+*PageSize A5/A5 (210 x 148 mm): "<</PageSize[595 419]/ImagingBBox null>>setpagedevice"
+*PageSize B5/B5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageSize Letter/Carta: "<</PageSize[612 790]/ImagingBBox null>>setpagedevice"
+*PageSize Legal/Oficio: "<</PageSize[612 1006]/ImagingBBox null>>setpagedevice"
+*PageSize Roll216/Rolo 216 mm continuo (1,5 m): "<</PageSize[612 4251]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+*OpenUI *PageRegion/Tamanho do papel: PickOne
+*OrderDependency: 10 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion A4/A4 (210 x 297 mm): "<</PageSize[595 841]/ImagingBBox null>>setpagedevice"
+*PageRegion A5/A5 (210 x 148 mm): "<</PageSize[595 419]/ImagingBBox null>>setpagedevice"
+*PageRegion B5/B5: "<</PageSize[498 708]/ImagingBBox null>>setpagedevice"
+*PageRegion Letter/Carta: "<</PageSize[612 790]/ImagingBBox null>>setpagedevice"
+*PageRegion Legal/Oficio: "<</PageSize[612 1006]/ImagingBBox null>>setpagedevice"
+*PageRegion Roll216/Rolo 216 mm continuo (1,5 m): "<</PageSize[612 4251]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+*DefaultImageableArea: A4
+*ImageableArea A4/A4 (210 x 297 mm): "0 0 595 841"
+*ImageableArea A5/A5 (210 x 148 mm): "0 0 595 419"
+*ImageableArea B5/B5: "0 0 498 708"
+*ImageableArea Letter/Carta: "0 0 612 790"
+*ImageableArea Legal/Oficio: "0 0 612 1006"
+*ImageableArea Roll216/Rolo 216 mm continuo (1,5 m): "0 0 612 4251"
+*DefaultPaperDimension: A4
+*PaperDimension A4/A4 (210 x 297 mm): "595 841"
+*PaperDimension A5/A5 (210 x 148 mm): "595 419"
+*PaperDimension B5/B5: "498 708"
+*PaperDimension Letter/Carta: "612 790"
+*PaperDimension Legal/Oficio: "612 1006"
+*PaperDimension Roll216/Rolo 216 mm continuo (1,5 m): "612 4251"
+*OpenUI *Resolution/Resolucao: PickOne
+*OrderDependency: 20 AnySetup *Resolution
+*DefaultResolution: 203dpi
+*Resolution 203dpi/203 dpi: "<</HWResolution[203 203]/cupsBitsPerColor 1/cupsColorOrder 0/cupsColorSpace 3>>setpagedevice"
+*CloseUI: *Resolution
+*OpenUI *Horizontal/Ajuste horizontal: PickOne
+*OrderDependency: 30 AnySetup *Horizontal
+*DefaultHorizontal: -1
+*Horizontal -20/-20 mm: "<</cupsInteger1 0>>setpagedevice"
+*Horizontal -19/-19 mm: "<</cupsInteger1 1>>setpagedevice"
+*Horizontal -18/-18 mm: "<</cupsInteger1 2>>setpagedevice"
+*Horizontal -17/-17 mm: "<</cupsInteger1 3>>setpagedevice"
+*Horizontal -16/-16 mm: "<</cupsInteger1 4>>setpagedevice"
+*Horizontal -15/-15 mm: "<</cupsInteger1 5>>setpagedevice"
+*Horizontal -14/-14 mm: "<</cupsInteger1 6>>setpagedevice"
+*Horizontal -13/-13 mm: "<</cupsInteger1 7>>setpagedevice"
+*Horizontal -12/-12 mm: "<</cupsInteger1 8>>setpagedevice"
+*Horizontal -11/-11 mm: "<</cupsInteger1 9>>setpagedevice"
+*Horizontal -10/-10 mm: "<</cupsInteger1 10>>setpagedevice"
+*Horizontal -9/-9 mm: "<</cupsInteger1 11>>setpagedevice"
+*Horizontal -8/-8 mm: "<</cupsInteger1 12>>setpagedevice"
+*Horizontal -7/-7 mm: "<</cupsInteger1 13>>setpagedevice"
+*Horizontal -6/-6 mm: "<</cupsInteger1 14>>setpagedevice"
+*Horizontal -5/-5 mm: "<</cupsInteger1 15>>setpagedevice"
+*Horizontal -4/-4 mm: "<</cupsInteger1 16>>setpagedevice"
+*Horizontal -3/-3 mm: "<</cupsInteger1 17>>setpagedevice"
+*Horizontal -2/-2 mm: "<</cupsInteger1 18>>setpagedevice"
+*Horizontal -1/-1 mm: "<</cupsInteger1 19>>setpagedevice"
+*Horizontal 0/+0 mm: "<</cupsInteger1 20>>setpagedevice"
+*Horizontal +1/+1 mm: "<</cupsInteger1 21>>setpagedevice"
+*Horizontal +2/+2 mm: "<</cupsInteger1 22>>setpagedevice"
+*Horizontal +3/+3 mm: "<</cupsInteger1 23>>setpagedevice"
+*Horizontal +4/+4 mm: "<</cupsInteger1 24>>setpagedevice"
+*Horizontal +5/+5 mm: "<</cupsInteger1 25>>setpagedevice"
+*Horizontal +6/+6 mm: "<</cupsInteger1 26>>setpagedevice"
+*Horizontal +7/+7 mm: "<</cupsInteger1 27>>setpagedevice"
+*Horizontal +8/+8 mm: "<</cupsInteger1 28>>setpagedevice"
+*Horizontal +9/+9 mm: "<</cupsInteger1 29>>setpagedevice"
+*Horizontal +10/+10 mm: "<</cupsInteger1 30>>setpagedevice"
+*Horizontal +11/+11 mm: "<</cupsInteger1 31>>setpagedevice"
+*Horizontal +12/+12 mm: "<</cupsInteger1 32>>setpagedevice"
+*Horizontal +13/+13 mm: "<</cupsInteger1 33>>setpagedevice"
+*Horizontal +14/+14 mm: "<</cupsInteger1 34>>setpagedevice"
+*Horizontal +15/+15 mm: "<</cupsInteger1 35>>setpagedevice"
+*Horizontal +16/+16 mm: "<</cupsInteger1 36>>setpagedevice"
+*Horizontal +17/+17 mm: "<</cupsInteger1 37>>setpagedevice"
+*Horizontal +18/+18 mm: "<</cupsInteger1 38>>setpagedevice"
+*Horizontal +19/+19 mm: "<</cupsInteger1 39>>setpagedevice"
+*Horizontal +20/+20 mm: "<</cupsInteger1 40>>setpagedevice"
+*CloseUI: *Horizontal
+*OpenUI *SavePaper/Cortar branco no fim: PickOne
+*OrderDependency: 30 AnySetup *SavePaper
+*DefaultSavePaper: Yes
+*SavePaper Yes/Sim: "<</cupsInteger2 0>>setpagedevice"
+*SavePaper No/Nao: "<</cupsInteger2 1>>setpagedevice"
+*CloseUI: *SavePaper
+*DefaultFont: Courier
+*Font Courier: Standard "(002.004S)" Standard ROM
