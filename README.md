@@ -21,7 +21,7 @@ Testado no Linux Mint 22.3 (base Ubuntu 24.04) com CUPS 2.4.
 Deixe a impressora ligada (luz verde) e, se quiser, conectada pelo cabo.
 
 ```bash
-git clone https://github.com/<seu-usuario>/genai-d80-linux.git
+git clone https://github.com/turmadorock/genai-d80-linux.git
 cd genai-d80-linux
 sudo bash instalar.sh
 ```
